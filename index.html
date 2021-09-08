@@ -1,0 +1,108 @@
+<html lang="en">
+        <head>
+                <title>althro</title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+			body {
+				background-color: #000;
+				font-family: monospace;
+				color: #FFF;
+				font-weight: bold;
+				font-size: 2em;
+			}
+			p, pre {
+				text-align: left;
+				margin: 0.5em auto;
+				max-width: 80%;
+			}
+			a {
+  				color: inherit;
+  				text-decoration: none; /* no underline */
+			}
+			.rainbow-text {
+			  	background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+			  	text-align: center;
+				font-size: 2vw;
+			  	background-size: 800% 800%;
+			  	-webkit-background-clip: text;
+			  	-webkit-text-fill-color: transparent;
+			  	/*font-size: 24px;*/
+			  	animation: rainbow 8s ease infinite;
+			}
+			@keyframes rainbow {
+			    0%{background-position:0% 50%}
+			    50%{background-position:100% 25%}
+			    100%{background-position:0% 50%}
+			}
+		</style>
+		<script data-dapp-detection>
+			(function() {
+			  let alreadyInsertedMetaTag = false
+
+			  function __insertDappDetected() {
+			    if (!alreadyInsertedMetaTag) {
+			      const meta = document.createElement('meta')
+			      meta.name = 'dapp-detected'
+			      document.head.appendChild(meta)
+			      alreadyInsertedMetaTag = true
+			    }
+			  }
+
+			  if (window.hasOwnProperty('web3')) {
+			    // Note a closure can't be used for this var because some sites like
+			    // www.wnyc.org do a second script execution via eval for some reason.
+			    window.__disableDappDetectionInsertion = true
+			    // Likely oldWeb3 is undefined and it has a property only because
+			    // we defined it. Some sites like wnyc.org are evaling all scripts
+			    // that exist again, so this is protection against multiple calls.
+			    if (window.web3 === undefined) {
+			      return
+			    }
+			    __insertDappDetected()
+			  } else {
+			    var oldWeb3 = window.web3
+			    Object.defineProperty(window, 'web3', {
+			      configurable: true,
+			      set: function (val) {
+			        if (!window.__disableDappDetectionInsertion)
+			          __insertDappDetected()
+			        oldWeb3 = val
+			      },
+			      get: function () {
+			        if (!window.__disableDappDetectionInsertion)
+			          __insertDappDetected()
+			        return oldWeb3
+			      }
+			    })
+			  }
+			})()
+		</script>
+	</head>
+	<body>
+                <table width="100%" height="100%" border="0">
+                        <tbody>
+                                <tr>
+                                        <td align="center" valign="midle">
+                                                <pre class="rainbow-text">
+         ____  __             &nbsp;
+  ____ _/ / /_/ /_  _________ &nbsp;
+ / __ `/ / __/ __ \/ ___/ __ \&nbsp;
+/ /_/ / / /_/ / / / /  / /_/ /&nbsp;
+\__,_/_/\__/_/ /_/_/   \____/ &nbsp;
+                                                </pre>
+						<p style="font-size: 1.25vw; mix-width: 50%; text-align: center;">
+							<a style="color:red" href="https://www.youtube.com/channel/UCKv80iaDYXYV0PZMAAzwuVA">YouTube</a> |
+							<a style="color:purple" href="https://www.twitch.tv/althrowastaken">Twitch</a> |
+							<a href="https://github.com/throal">Github</a>
+						</p>
+                                                <p style="font-size: 1.25vw; max-width: 50%">
+                                                        <strong>Contact:</strong><br>
+							Email:me@althro.xyz<br>
+						</p>
+                                        </td>
+                                </tr>
+                        </tbody>
+                </table>
+        </body>
+</html>
